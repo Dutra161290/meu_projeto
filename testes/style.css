@@ -1,0 +1,14 @@
+h1{
+    color:#16b0e9;
+}
+
+body{
+    /*background-color: hsl(22, 69%, 45%);*/
+    background-image: url(../SRC/IMAGENS/cat.jpg) ;
+    background-repeat:no-repeat;
+    background-size: cover ;
+
+   
+
+
+    }
