@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Administração de Logística — Loja de Moda</title>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Administração de Logística — Loja de Moda</title>
+  <style>
+    :root{
+      --brand: #501128;
+      --brand-dark: #3a0f24;
+      --muted: #f4f4f5;
+      --card: #ffffff;
+      --accent: #e9ced6;
+      --text: #222;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,sans-serif;background:#f8f8f9;color:var(--text)}
+
+    .app{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+    .sidebar{background:var(--brand);color:#fff;padding:20px;display:flex;flex-direction:column}
+    .logo{font-size:20px;font-weight:700;margin-bottom:20px}
+    .nav a{display:block;color:#fff;text-decoration:none;padding:10px;border-radius:6px;margin-bottom:6px}
+    .nav a.active,.nav a:hover{background:rgba(255,255,255,0.15)}
+
+    .main{padding:20px;display:flex;flex-direction:column}
+    .topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+    .search input{padding:10px 14px;border-radius:8px;border:1px solid #ccc;min-width:240px}
+
+    .filters{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+    .filters select,.filters input{padding:10px;border-radius:6px;border:1px solid #ccc;min-width:160px}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:20px}
+    .card{background:var(--card);border-radius:12px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+    .card h3{margin:0 0 8px 0;font-size:14px;color:var(--brand)}
+    .big-number{font-size:24px;font-weight:700}
+
+    .panel{background:var(--card);border-radius:12px;padding:16px;box-shadow:0 4px 12px rgba(0,0,0,0.08);margin-bottom:20px}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:10px;border-bottom:1px solid #eee;font-size:14px;text-align:left}
+    .tag{padding:4px 8px;border-radius:12px;font-size:12px}
+    .in-stock{background:#e6f7ee;color:#0b6a3b}
+    .low-stock{background:#ffecec;color:#a61b1b}
+
+    footer{text-align:center;font-size:13px;color:#777;margin-top:auto;padding:20px}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="logo">Loja Moda — Logística</div>
+      <nav class="nav">
+        <a class="active">Visão geral</a>
+        <a>Produtos</a>
+        <a>Pedidos</a>
+        <a>Estoque</a>
+        <a>Fornecedores</a>
+        <a>Relatórios</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <h2>Painel de Administração</h2>
+        <div class="search"><input placeholder="Pesquisar produtos, pedidos..."/></div>
+      </div>
+
+      <!-- Filtros principais -->
+      <div class="filters">
+        <select>
+          <option>Todos os produtos</option>
+          <option>Em estoque</option>
+          <option>Faltando</option>
+          <option>Estoque baixo</option>
+        </select>
+        <select>
+          <option>Pedidos</option>
+          <option>Pendentes</option>
+          <option>Finalizados</option>
+        </select>
+        <select>
+          <option>Fornecedores</option>
+          <option>Ativos</option>
+          <option>Inativos</option>
+        </select>
+        <input type="date"/>
+      </div>
+
+      <!-- Métricas rápidas -->
+      <section class="grid">
+        <div class="card"><h3>Produtos em estoque</h3><div class="big-number">1.842</div></div>
+        <div class="card"><h3>Pedidos feitos</h3><div class="big-number">320</div></div>
+        <div class="card"><h3>Produtos faltando</h3><div class="big-number">14</div></div>
+        <div class="card"><h3>Vendas realizadas</h3><div class="big-number">1.125</div></div>
+        <div class="card"><h3>Fornecedores ativos</h3><div class="big-number">8</div></div>
+      </section>
+
+      <!-- Tabelas principais -->
+      <section class="panel">
+        <h3>Últimos itens que entraram no estoque</h3>
+        <table>
+          <thead><tr><th>SKU</th><th>Produto</th><th>Qtde</th><th>Data Entrada</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>SKU-101</td><td>Vestido Midi</td><td>50</td><td>28/09/2025</td><td><span class="tag in-stock">Em estoque</span></td></tr>
+            <tr><td>SKU-102</td><td>Blazer Oversized</td><td>9</td><td>27/09/2025</td><td><span class="tag low-stock">Baixo</span></td></tr>
+            <tr><td>SKU-103</td><td>Camiseta Algodão</td><td>100</td><td>26/09/2025</td><td><span class="tag in-stock">Em estoque</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="panel">
+        <h3>Fornecedores</h3>
+        <table>
+          <thead><tr><th>Nome</th><th>Produtos</th><th>Status</th><th>Tempo médio entrega</th></tr></thead>
+          <tbody>
+            <tr><td>Fornecedor X</td><td>Vestidos, Blazers</td><td>Ativo</td><td>6 dias</td></tr>
+            <tr><td>Fornecedor Y</td><td>Camisetas</td><td>Ativo</td><td>4 dias</td></tr>
+            <tr><td>Fornecedor Z</td><td>Jaquetas</td><td>Inativo</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <footer>© 2025 Loja Moda — Administração de Logística</footer>
+    </main>
+  </div>
+</body>
+</html>
+
